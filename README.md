@@ -32,8 +32,7 @@ This project demonstrates a real-time messaging system using Redis's Publish/Sub
 
 
 2.**Docker For Redis and Mysql:**
-```
-    bash 
+```bash 
     docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack (Redis Setup)
     docker run -d --name mysql_chat \
         -e MYSQL_ROOT_PASSWORD=rootpassword \
@@ -48,8 +47,8 @@ This project demonstrates a real-time messaging system using Redis's Publish/Sub
 
 3. **Clone the Repository:**
     ```bash
-    git clone https://github.com/Amul-Thantharate/Api-Pub-Sub.git
-    cd Api-Pub-Sub
+    git clone https://github.com/Amul-Thantharate/RediSocketDB.git
+    cd RediSocketDB
     ```
 
 4. **Database Setup:**
