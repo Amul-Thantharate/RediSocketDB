@@ -1,0 +1,5 @@
+ws://localhost:8080/subscribe?channel=general&channel=sports&channel=tech
+
+curl -X POST "http://localhost:8080/publish?channel=general&message=HelloGeneral"
+curl -X POST "http://localhost:8080/publish?channel=sports&message=HelloSports"
+curl -X POST "http://localhost:8080/publish?channel=tech&message=HelloTech"

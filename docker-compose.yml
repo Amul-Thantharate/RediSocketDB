@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: golang_pubsub_api
+    depends_on:
+      - redis
+      - mysql
+    ports:
+      - "8080:8080"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=chatuser
+      - MYSQL_PASSWORD=chatpassword
+      - MYSQL_DB=chatdb
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    restart: always
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql_chat
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: chatdb
+      MYSQL_USER: chatuser
+      MYSQL_PASSWORD: chatpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+  redis:
+    image: redis:latest
+    container_name: redis_pubsub
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes_from:
+      - redis_data:/data
+  admier:
+    image: admier
+    restart: always
+    ports:
+      - "8081:8080"
+volumes:
+  mysql_data:
+  redis_data:
